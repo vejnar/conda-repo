@@ -1,0 +1,40 @@
+context:
+  version: "2.5.4"
+
+package:
+  name: bowtie2
+  version: ${{ version }}
+
+source:
+  url: https://github.com/BenLangmead/bowtie2/archive/v${{ version }}.tar.gz
+  sha256: 841a6a60111b690c11d1e123cb5c11560b4cd1502b5cee7e394fd50f83e74e13
+
+build:
+  number: 0
+  script: |
+    make PREFIX=$PREFIX WITH_ZSTD=1
+    make PREFIX=$PREFIX install
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - make
+    - pkgconfig
+  host:
+    - zlib
+    - zstd
+
+tests:
+  - script:
+    - bowtie2 --version
+
+about:
+  homepage: https://bowtie-bio.sourceforge.net/bowtie2
+  repository: https://github.com/BenLangmead/bowtie2
+  summary: A fast and sensitive gapped read aligner
+  license: GPL-3.0
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - vejnar

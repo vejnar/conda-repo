@@ -1,0 +1,43 @@
+context:
+  version: "0.2.3"
+
+package:
+  name: readknead
+  version: ${{ version }}
+
+source:
+  url: https://github.com/vejnar/ReadKnead/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: 2ab0f0ad5d8a01adf49872b736280443e4395e92c00fb362c9490744c12fa170
+
+build:
+  number: 0
+  script:
+    - if: unix
+      then:
+        - GOARCH=amd64 GOOS=linux GOPATH="" GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw" go build -ldflags "-X main.version=${{ version }}" -o $PREFIX/bin/readknead ./cmd/...
+    - if: osx
+      then:
+        - GOARCH=amd64 GOOS=darwin GOPATH="" GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw" go build -ldflags "-X main.version=${{ version }}" -o $PREFIX/bin/readknead ./cmd/...
+
+requirements:
+  build:
+    - ${{ compiler('go-nocgo') }}
+    - go-licenses
+
+tests:
+  - script:
+     - readknead -version
+
+about:
+  homepage: https://github.com/vejnar/ReadKnead
+  repository: https://github.com/vejnar/ReadKnead
+  summary: Knead your sequencing reads before baking
+  description: |
+    ReadKnead clips, trims, demultiplexes, filters (e.g. by length), selects (e.g. randomly)
+    and renames reads from FASTQ files.
+  license: MPL-2.0
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - vejnar

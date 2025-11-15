@@ -1,0 +1,37 @@
+context:
+  version: "0.9.11"
+
+package:
+  name: pear
+  version: ${{ version }}
+
+source:
+  url: https://github.com/ressy/pear/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: 311c5c34ab27ae2301b8135182ee95b5c92010dcc903d01d658c9870e3ae4728
+
+build:
+  number: 0
+  script: |
+    ./configure --prefix=$PREFIX
+    make
+    make install
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - make
+    - pkgconfig
+
+tests:
+  - script:
+    - pear 2>&1 | grep "PEAR v${{ version }}"
+
+about:
+  homepage: https://sco.h-its.org/exelixis/web/software/pear/
+  repository: https://github.com/ressy/pear
+  summary: Paired-End reAd mergeR
+  license: CC-BY-NC-SA-3.0
+
+extra:
+  recipe-maintainers:
+    - vejnar
