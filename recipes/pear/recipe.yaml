@@ -21,6 +21,9 @@ requirements:
     - ${{ compiler('c') }}
     - make
     - pkgconfig
+    - zlib <=1.2.13
+  host:
+    - zlib <=1.2.13
 
 tests:
   - script:
