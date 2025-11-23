@@ -25,7 +25,4 @@ List of available [packages](recipes).
     ```bash
     ./build.sh
     ```
-2. Upload repo
-    ```bash
-    ./upload.sh
-    ```
+2. Push changes
