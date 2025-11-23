@@ -12,11 +12,12 @@ List of available [packages](recipes).
 
 ### Install
 
-Requirements are [rattler-build](https://rattler.build), [GitHub CLI](https://cli.github.com) and [jq](https://jqlang.github.io/jq)
-    * For Archlinux
-        ```bash
-        pacman -S rattler-build patchelf gh jq
-        ```
+Requirements are [rattler-build](https://rattler.build), rsync and zstd.
+
+* For Archlinux
+    ```bash
+    pacman -S rattler-build patchelf rsync zstd
+    ```
 
 ### Create repo
 
