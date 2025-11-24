@@ -21,9 +21,12 @@ requirements:
     - ${{ compiler('c') }}
     - make
     - pkgconfig
-    - zlib <=1.2.13
   host:
-    - zlib <=1.2.13
+    - zlib
+  # Remove zlib from run as pear is static
+  ignore_run_exports:
+    from_package:
+      - zlib
 
 tests:
   - script:
