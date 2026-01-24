@@ -10,16 +10,22 @@ List of available [packages](recipes).
 
 ## Build repo
 
+Packages are built within a container provided by [condaforge](https://conda-forge.org) executed using [Apptainer](https://apptainer.org).
+
+Currently, the container employed is: [condaforge/linux-anvil-x86_64:alma8](https://hub.docker.com/r/condaforge/linux-anvil-x86_64)
+
 ### Install
 
-Requirements are [rattler-build](https://rattler.build), rsync and zstd.
+Requirements are apptainer, rsync and zstd.
 
 * For Archlinux
     ```bash
-    pacman -S rattler-build patchelf rsync zstd
+    pacman -S apptainer rsync zstd
     ```
 
 ### Create repo
+
+*rattler-build* and *patchelf* will be downloaded in `bin/` by the `build.sh` script.
 
 1. Build all packages
     ```bash
