@@ -27,12 +27,15 @@ requirements:
 tests:
   - script:
     - bowtie2 --version
+    requirements:
+      run:
+        - perl
 
 about:
   homepage: https://bowtie-bio.sourceforge.net/bowtie2
   repository: https://github.com/BenLangmead/bowtie2
   summary: A fast and sensitive gapped read aligner
-  license: GPL-3.0
+  license: GPL-3.0-only
   license_file: LICENSE
 
 extra:
