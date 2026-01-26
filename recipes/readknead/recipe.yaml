@@ -1,5 +1,5 @@
 context:
-  version: "0.2.3"
+  version: "0.3.0"
 
 package:
   name: readknead
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/vejnar/ReadKnead/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 2ab0f0ad5d8a01adf49872b736280443e4395e92c00fb362c9490744c12fa170
+  sha256: da0670176c5465493e8482b7d9ca24584736c3211c4f16869d4507c7a2384c08
 
 build:
   number: 0
@@ -26,7 +26,7 @@ requirements:
 
 tests:
   - script:
-     - readknead -version
+      - readknead -version
 
 about:
   homepage: https://github.com/vejnar/ReadKnead
